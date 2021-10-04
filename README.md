@@ -36,7 +36,24 @@ deno_register_toolchains(
 
 Now you can use the deno toolchain fetched for your platform.
 
-## Example
+## Usage
 
-See the examples/genrule folder for the simplest usage: run deno in a Bazel genrule
-where you fully control the command line used to spawn deno.
+### Generating outputs
+
+Bazel incrementally transforms the source tree to a bazel-out folder, by spawning
+subprocesses to run tools. These are called actions and the simplest way to define
+one is with the "generic rule" [genrule](https://docs.bazel.build/versions/main/be/general.html#genrule)
+
+See the examples/genrule folder for the simplest usage: we run deno in a genrule
+where you fully control the command line used to spawn deno, transforming declared
+inputs into declared outputs using the toolchain provided by these rules to select
+the deno runtime for the host and target platform.
+
+### Running programs
+
+Both binaries and tests are spawned by Bazel, but without expecting output files.
+In the case of tests, Bazel treats these as arbitrary programs that exit zero or non-zero.
+
+See the example in the tests/ folder where we use Bazel's `sh_test` rule to wrap a
+Deno program. You could similarly use an `sh_binary` to make a standalone program
+that can be used with `bazel run`.
