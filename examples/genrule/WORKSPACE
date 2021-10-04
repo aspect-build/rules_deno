@@ -1,0 +1,23 @@
+workspace(name = "genrule_example")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# See the note in rules_deno/CONTRIBUTING.md to use the local source for rules_deno rather than release
+http_archive(
+    name = "dev_aspect_rules_deno",
+    sha256 = "d5f668498989d6f3ee1f015707771bcaca7ea05291ee08404e78095bdc4f1fdc",
+    urls = [
+        "https://github.com/aspect-dev/rules_deno/releases/download/0.1.0/rules_deno-0.1.0.tar.gz",
+    ],
+)
+
+load("@dev_aspect_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
+
+# This just gives us bazel-skylib
+# We could just as easily install that ourselves instead of calling this helper.
+rules_deno_dependencies()
+
+deno_register_toolchains(
+    name = "deno1_14",
+    deno_version = "1.14.2",
+)
