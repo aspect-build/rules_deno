@@ -18,7 +18,7 @@ http_archive(
     name = "dev_aspect_rules_deno",
     sha256 = "ca07f393896e555fba89066cb343638ce8cc859d07f47ba54ffd308394610bce",
     urls = [
-        "https://github.com/aspect-dev/rules_deno/releases/download/0.1.0/rules_deno-0.1.0.tar.gz",
+        "https://github.com/aspect-dev/rules_deno/releases/download/v0.1.0/rules_deno-0.1.0.tar.gz",
     ],
 )
 
