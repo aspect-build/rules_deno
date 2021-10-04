@@ -1,0 +1,12 @@
+sh_test(
+    name = "hello_world_test",
+    srcs = ["hello_world.test.sh"],
+    data = [
+        "hello_world.js",
+        "@deno1_14_toolchains//:resolved_toolchain",
+    ],
+    env = {
+        "DENO": "$(DENO_PATH)",
+    },
+    toolchains = ["@deno1_14_toolchains//:resolved_toolchain"],
+)

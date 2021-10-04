@@ -1,5 +1,13 @@
 # Bazel rules for deno
 
+This is very early experimental code to provide basic Deno support under Bazel.
+This project comes with no guarantees about support, maintenance, or viability, and might be archived at any time.
+
+Depend on this at your own risk!
+
+If we find interest in developing the rules further, we'll fund the project and provide a roadmap of when
+you could expect a stable release with a minimal viable feature set.
+
 ## Installation
 
 Include this in your WORKSPACE file:
@@ -7,22 +15,28 @@ Include this in your WORKSPACE file:
 ```starlark
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
-    name = "com_aspect-dev_rules_deno",
-    url = "https://github.com/aspect-dev/rules_deno/releases/download/0.0.0/rules_deno-0.0.0.tar.gz",
-    sha256 = "",
+    name = "dev_aspect_rules_deno",
+    sha256 = "ca07f393896e555fba89066cb343638ce8cc859d07f47ba54ffd308394610bce",
+    urls = [
+        "https://github.com/aspect-dev/rules_deno/releases/download/0.1.0/rules_deno-0.1.0.tar.gz",
+    ],
 )
 
-load("@dev_aspect_rules_deno//deno:repositories.bzl", "deno_rules_dependencies")
+load("@dev_aspect_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
 
-# This fetches the rules_deno dependencies, which are:
-# - bazel_skylib
-# If you want to have a different version of some dependency,
-# you should fetch it *before* calling this.
-# Alternatively, you can skip calling this function, so long as you've
-# already fetched these dependencies.
+# This just gives us bazel-skylib
+# You could just as easily install that yourself instead of calling this helper.
 rules_deno_dependencies()
+
+deno_register_toolchains(
+    name = "deno",
+    deno_version = "1.14.2",
+)
 ```
 
-> note, in the above, replace the version and sha256 with the one indicated
-> in the release notes for rules_deno
-> In the future, our release automation should take care of this.
+Now you can use the deno toolchain fetched for your platform.
+
+## Example
+
+See the examples/genrule folder for the simplest usage: run deno in a Bazel genrule
+where you fully control the command line used to spawn deno.
