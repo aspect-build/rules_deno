@@ -31,6 +31,7 @@ jobs:
         with:
           path: "~/.cache/bazel-repo"
           key: bazel-repo
+      - run: mkdir -p ~/.cache/deno/gen
       - name: bazel test //...
         env:
           # Bazelisk will download bazel to here

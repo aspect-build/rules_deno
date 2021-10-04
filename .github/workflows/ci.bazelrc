@@ -4,4 +4,4 @@ build --announce_rc
 test --test_output=errors
 build --disk_cache=$HOME/.cache/bazel
 build --repository_cache=$HOME/.cache/bazel-repo
-test --test_env=XDG_CACHE_HOME
+test --test_env=HOME
