@@ -1,8 +1,13 @@
-filegroup(
-    name = "package_content",
-    srcs = glob([
-        "*.bzl",
-        "*.bazel",
-    ]),
-    visibility = ["//deno:__pkg__"],
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+
+bzl_library(
+    name = "deno_versions",
+    srcs = ["deno_versions.bzl"],
+    visibility = ["//deno:__subpackages__"],
+)
+
+bzl_library(
+    name = "toolchains_repo",
+    srcs = ["toolchains_repo.bzl"],
+    visibility = ["//deno:__subpackages__"],
 )
