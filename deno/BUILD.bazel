@@ -1,3 +1,5 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+
 # This is the target rule authors should put in their "toolchains"
 # attribute in order to get a deno runtime for the correct
 # platform.
@@ -7,13 +9,31 @@ toolchain_type(
     visibility = ["//visibility:public"],
 )
 
-filegroup(
-    name = "package_content",
-    srcs = glob([
-        "*.bzl",
-        "*.bazel",
-    ]) + [
-        "//deno/private:package_content",
+exports_files(
+    ["defs.bzl"],
+    visibility = ["//docs:__pkg__"],
+)
+
+bzl_library(
+    name = "defs",
+    srcs = ["defs.bzl"],
+    visibility = ["//visibility:public"],
+)
+
+bzl_library(
+    name = "repositories",
+    srcs = ["repositories.bzl"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//deno/private:deno_versions",
+        "//deno/private:toolchains_repo",
+        "@bazel_tools//tools/build_defs/repo:http.bzl",
+        "@bazel_tools//tools/build_defs/repo:utils.bzl",
     ],
-    visibility = ["//:__pkg__"],
+)
+
+bzl_library(
+    name = "toolchain",
+    srcs = ["toolchain.bzl"],
+    visibility = ["//visibility:public"],
 )
