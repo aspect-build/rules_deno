@@ -16,7 +16,7 @@ http_archive(
     name = "contrib_rules_deno",
     sha256 = "${SHA}",
     strip_prefix = "${PREFIX}",
-    url = "https://github.com/bazel-contrib/rules_deno/archive/refs/tags/${TAG}.tar.gz",
+    url = "https://github.com/aspect-build/rules_deno/archive/refs/tags/${TAG}.tar.gz",
 )
 
 # Fetches the rules_deno dependencies.
