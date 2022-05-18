@@ -3,10 +3,10 @@ sh_test(
     srcs = ["hello_world.test.sh"],
     data = [
         "hello_world.js",
-        "@deno1_21_toolchains//:resolved_toolchain",
+        "@deno_toolchains//:resolved_toolchain",
     ],
     env = {
         "DENO": "$(DENO_PATH)",
     },
-    toolchains = ["@deno1_21_toolchains//:resolved_toolchain"],
+    toolchains = ["@deno_toolchains//:resolved_toolchain"],
 )
