@@ -16,10 +16,9 @@ Include this in your WORKSPACE file:
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "contrib_rules_deno",
-    sha256 = "ca07f393896e555fba89066cb343638ce8cc859d07f47ba54ffd308394610bce",
-    urls = [
-        "https://github.com/aspect-dev/rules_deno/releases/download/v0.1.0/rules_deno-0.1.0.tar.gz",
-    ],
+    sha256 = "9f266a8c2e37e10eb1b460bd0d227524962a0d819544da15bee9f2e053b56c82",
+    strip_prefix = "rules_deno-0.1.1",
+    url = "https://github.com/aspect-build/rules_deno/archive/refs/tags/v0.1.1.tar.gz",
 )
 
 load("@contrib_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
@@ -29,8 +28,8 @@ load("@contrib_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "
 rules_deno_dependencies()
 
 deno_register_toolchains(
-    name = "deno",
-    deno_version = "1.14.2",
+    name = "deno1_21",
+    deno_version = "1.21.3",
 )
 ```
 

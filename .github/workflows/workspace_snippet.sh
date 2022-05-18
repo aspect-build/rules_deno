@@ -30,8 +30,8 @@ rules_deno_dependencies()
 
 # Choose a deno interpreter version
 deno_register_toolchains(
-    name = "deno1_14",
-    deno_version = "1.14.2",
+    name = "deno1_21",
+    deno_version = "1.21.3",
 )
 
 \`\`\`

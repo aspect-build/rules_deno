@@ -27,8 +27,8 @@ genrule(
     srcs = ["some.js"],
     outs = ["genrule_out"],
     cmd = "$(DENO_PATH) run --allow-write $(execpath some.js) $@",
-    toolchains = ["@deno1_14_toolchains//:resolved_toolchain"],
-    tools = ["@deno1_14_toolchains//:resolved_toolchain"],
+    toolchains = ["@deno1_21_toolchains//:resolved_toolchain"],
+    tools = ["@deno1_21_toolchains//:resolved_toolchain"],
 )
 
 diff_test(
