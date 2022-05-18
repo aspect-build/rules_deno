@@ -8,6 +8,10 @@ TAG=${GITHUB_REF_NAME}
 PREFIX="rules_deno-${TAG:1}"
 SHA=$(git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip | shasum -a 256 | awk '{print $1}')
 
+# Semver regex from https://gist.github.com/rverst/1f0b97da3cbeb7d93f4986df6e8e5695
+SEMVER_PATTERN='(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-((0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?'
+LATEST_VERSION="$(< ./deno/private/deno_versions.bzl grep -oE "${SEMVER_PATTERN}" | sort -V | tail -n1)"
+
 cat << EOF
 WORKSPACE snippet:
 \`\`\`starlark
@@ -30,8 +34,8 @@ rules_deno_dependencies()
 
 # Choose a deno interpreter version
 deno_register_toolchains(
-    name = "deno1_21",
-    deno_version = "1.21.3",
+    name = "deno",
+    deno_version = "${LATEST_VERSION}",
 )
 
 \`\`\`

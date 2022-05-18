@@ -10,37 +10,14 @@ you could expect a stable release with a minimal viable feature set.
 
 ## Installation
 
-Include this in your WORKSPACE file:
-
-```starlark
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-http_archive(
-    name = "contrib_rules_deno",
-    sha256 = "9f266a8c2e37e10eb1b460bd0d227524962a0d819544da15bee9f2e053b56c82",
-    strip_prefix = "rules_deno-0.1.1",
-    url = "https://github.com/aspect-build/rules_deno/archive/refs/tags/v0.1.1.tar.gz",
-)
-
-load("@contrib_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
-
-# This just gives us bazel-skylib
-# You could just as easily install that yourself instead of calling this helper.
-rules_deno_dependencies()
-
-deno_register_toolchains(
-    name = "deno1_21",
-    deno_version = "1.21.3",
-)
-```
+From the release you wish to use:
+https://github.com/aspect-build/rules_deno/releases copy the WORKSPACE snippet into your `WORKSPACE` file.
 
 Now you can use the deno toolchain fetched for your platform.
 
 ## Usage
 
 ### Deno binaries
-
-TODO: The `deno_binary` rule requires release version 0.1.2. Remove this TODO
-after updating the WORKSPACE snippet above to that release.
 
 The `deno_binary` rule creates executable Bazel targets from Deno script files.
 
@@ -59,8 +36,9 @@ deno_binary(
 )
 ```
 
-Your Deno script can also make use of Bazel runtime environment variables like
-`$BUILD_WORKSPACE_DIRECTORY` and `$BUILD_WORKING_DIRECTORY`.
+If executed using `bazel run`, a Deno script can also make use of Bazel runtime
+environment variables like `$BUILD_WORKSPACE_DIRECTORY` and
+`$BUILD_WORKING_DIRECTORY`.
 
 ### Deno libraries
 

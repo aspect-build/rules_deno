@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-examples/deno_binary/example.sh script_output.json
+$SCRIPT_LOCATION script_output.json
 
 echo "Deno execution finished"
 
