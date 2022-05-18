@@ -11,3 +11,9 @@ bzl_library(
     srcs = ["toolchains_repo.bzl"],
     visibility = ["//deno:__subpackages__"],
 )
+
+bzl_library(
+    name = "binary",
+    srcs = ["binary.bzl"],
+    visibility = ["//deno:__subpackages__"],
+)

@@ -37,6 +37,47 @@ Now you can use the deno toolchain fetched for your platform.
 
 ## Usage
 
+### Deno binaries
+
+TODO: The `deno_binary` rule requires release version 0.1.2. Remove this TODO
+after updating the WORKSPACE snippet above to that release.
+
+The `deno_binary` rule creates executable Bazel targets from Deno script files.
+
+```starlark
+load("@contrib_rules_deno//deno:defs.bzl", "deno_binary")
+
+deno_binary(
+    name = "example",
+    allow = ["write"],
+    main = "main.ts",
+    unstable_apis = True,
+    deps = [
+        "helper.ts",
+        ":deno_utils",
+    ],
+)
+```
+
+Your Deno script can also make use of Bazel runtime environment variables like
+`$BUILD_WORKSPACE_DIRECTORY` and `$BUILD_WORKING_DIRECTORY`.
+
+### Deno libraries
+
+There's no need for a `deno_library` rule, since Deno will just access imported
+script files at runtime. If you'd like to make file bundles to include in your
+`deps`, just use a `filegroup`.
+
+```starlark
+filegroup(
+    name = "deno_utils",
+    srcs = [
+        "bazel.ts",
+        "console.ts",
+    ],
+)
+```
+
 ### Generating outputs
 
 Bazel incrementally transforms the source tree to a bazel-out folder, by spawning
