@@ -16,3 +16,5 @@ DENO_VERSIONS = {
         "x86_64-unknown-linux-gnu": "sha384-fqYpdOr10axKEG9b7KrMNwwlxdYnoqf+Mrcw/KoOzgNgRSB1sCUfRR3vcIvAcPlJ",
     },
 }
+
+LATEST_VERSION = DENO_VERSIONS.keys()[-1]

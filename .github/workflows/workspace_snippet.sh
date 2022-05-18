@@ -7,10 +7,7 @@ set -o errexit -o nounset -o pipefail
 TAG=${GITHUB_REF_NAME}
 PREFIX="rules_deno-${TAG:1}"
 SHA=$(git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip | shasum -a 256 | awk '{print $1}')
-
-# Semver regex from https://gist.github.com/rverst/1f0b97da3cbeb7d93f4986df6e8e5695
-SEMVER_PATTERN='(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-((0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?'
-LATEST_VERSION="$(< ./deno/private/deno_versions.bzl grep -oE "${SEMVER_PATTERN}" | sort -V | tail -n1)"
+LATEST_VERSION="$(bazel run //deno/private:latest_version --ui_event_filters=-info,-stdout,-stderr --noshow_progress)"
 
 cat << EOF
 WORKSPACE snippet:
