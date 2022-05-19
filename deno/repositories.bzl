@@ -7,7 +7,10 @@ See https://docs.bazel.build/versions/main/skylark/deploying.html#dependencies
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("//deno/private:toolchains_repo.bzl", "PLATFORMS", "toolchains_repo")
-load("//deno/private:deno_versions.bzl", "DENO_VERSIONS")
+load("//deno/private:deno_versions.bzl", "DENO_VERSIONS", _LATEST_VERSION = "LATEST_VERSION")
+
+# Expose as Public API
+LATEST_VERSION = _LATEST_VERSION
 
 _DOC = "TODO"
 _ATTRS = {

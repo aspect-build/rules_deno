@@ -10,7 +10,12 @@ local_repository(
 # rules_deno setup #
 ######################
 
-load("@contrib_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
+load(
+    "@contrib_rules_deno//deno:repositories.bzl",
+    "LATEST_VERSION",
+    "deno_register_toolchains",
+    "rules_deno_dependencies",
+)
 
 # Fetches the rules_deno dependencies.
 # If you want to have a different version of some dependency,
@@ -21,5 +26,5 @@ rules_deno_dependencies()
 
 deno_register_toolchains(
     name = "deno",
-    deno_version = "1.21.3",
+    deno_version = LATEST_VERSION,
 )

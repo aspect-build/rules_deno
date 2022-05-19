@@ -7,7 +7,6 @@ set -o errexit -o nounset -o pipefail
 TAG=${GITHUB_REF_NAME}
 PREFIX="rules_deno-${TAG:1}"
 SHA=$(git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip | shasum -a 256 | awk '{print $1}')
-LATEST_VERSION="$(bazel run //deno/private:latest_version --ui_event_filters=-info,-stdout,-stderr --noshow_progress)"
 
 cat << EOF
 WORKSPACE snippet:
@@ -25,14 +24,19 @@ http_archive(
 # you should fetch it *before* calling this.
 # Alternatively, you can skip calling this function, so long as you've
 # already fetched all the dependencies.
-load("@contrib_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
+load(
+    "@contrib_rules_deno//deno:repositories.bzl",
+    "LATEST_VERSION",
+    "deno_register_toolchains",
+    "rules_deno_dependencies",
+)
 
 rules_deno_dependencies()
 
 # Choose a deno interpreter version
 deno_register_toolchains(
     name = "deno",
-    deno_version = "${LATEST_VERSION}",
+    deno_version = LATEST_VERSION,
 )
 
 \`\`\`

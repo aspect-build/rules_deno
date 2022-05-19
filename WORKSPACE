@@ -15,13 +15,13 @@ load(":internal_deps.bzl", "rules_deno_internal_deps")
 rules_deno_internal_deps()
 
 # Install our "runtime" dependencies which users install as well
-load("//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
+load("//deno:repositories.bzl", "LATEST_VERSION", "deno_register_toolchains", "rules_deno_dependencies")
 
 rules_deno_dependencies()
 
 deno_register_toolchains(
     name = "deno",
-    deno_version = "1.21.3",
+    deno_version = LATEST_VERSION,
 )
 
 # For running our own unit tests
