@@ -20,7 +20,7 @@ load("//deno:repositories.bzl", "LATEST_VERSION", "deno_register_toolchains", "r
 rules_deno_dependencies()
 
 deno_register_toolchains(
-    name = "deno",
+    name = "deno_local",
     deno_version = LATEST_VERSION,
 )
 
