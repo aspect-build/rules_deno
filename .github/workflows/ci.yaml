@@ -44,6 +44,7 @@ jobs:
           path: |
             "~/.cache/bazel"
             "~/.cache/bazel-repo"
+            "~/.cache/deno"
           key: bazel-cache-${{ hashFiles('**/BUILD.bazel', '**/*.bzl', 'WORKSPACE') }}
           restore-keys: bazel-cache-
       - run: mkdir -p ~/.cache/deno/gen
