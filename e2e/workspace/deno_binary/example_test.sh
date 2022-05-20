@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -e
+
 $SCRIPT_LOCATION script_output.json
 
 echo "Deno execution finished"
@@ -12,4 +14,6 @@ if [[ "$expected_output" != "$actual_output" ]]; then
   printf "Expected:\n%s\n" "$expected_output" >&2
   printf "Actual:\n%s\n" "$actual_output" >&2
   exit 1
+else
+  echo "SUCCESS: Output file matched expected output."
 fi

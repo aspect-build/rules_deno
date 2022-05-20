@@ -46,13 +46,10 @@ jobs:
             "~/.cache/bazel-repo"
           key: bazel-cache-${{ hashFiles('**/BUILD.bazel', '**/*.bzl', 'WORKSPACE') }}
           restore-keys: bazel-cache-
-      - run: mkdir -p ~/.cache/deno/gen
       - name: bazel test //...
         env:
           # Bazelisk will download bazel to here, ensure it is cached between runs.
           XDG_CACHE_HOME: ~/.cache/bazel-repo
         working-directory: ${{ matrix.folder }}
         run: |
-          mkdir -p .deno/cache
-          DENO_DIR="$PWD/.deno/cache"
           bazel --bazelrc=$GITHUB_WORKSPACE/.github/workflows/ci.bazelrc --bazelrc=.bazelrc test //...
