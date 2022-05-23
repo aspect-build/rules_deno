@@ -10,33 +10,51 @@ you could expect a stable release with a minimal viable feature set.
 
 ## Installation
 
-Include this in your WORKSPACE file:
-
-```starlark
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-http_archive(
-    name = "contrib_rules_deno",
-    sha256 = "ca07f393896e555fba89066cb343638ce8cc859d07f47ba54ffd308394610bce",
-    urls = [
-        "https://github.com/aspect-dev/rules_deno/releases/download/v0.1.0/rules_deno-0.1.0.tar.gz",
-    ],
-)
-
-load("@contrib_rules_deno//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependencies")
-
-# This just gives us bazel-skylib
-# You could just as easily install that yourself instead of calling this helper.
-rules_deno_dependencies()
-
-deno_register_toolchains(
-    name = "deno",
-    deno_version = "1.14.2",
-)
-```
+From the release you wish to use:
+https://github.com/aspect-build/rules_deno/releases copy the WORKSPACE snippet into your `WORKSPACE` file.
 
 Now you can use the deno toolchain fetched for your platform.
 
 ## Usage
+
+### Deno binaries
+
+The `deno_binary` rule creates executable Bazel targets from Deno script files.
+
+```starlark
+load("@contrib_rules_deno//deno:defs.bzl", "deno_binary")
+
+deno_binary(
+    name = "example",
+    allow = ["write"],
+    main = "main.ts",
+    unstable_apis = True,
+    deps = [
+        "helper.ts",
+        ":deno_utils",
+    ],
+)
+```
+
+If executed using `bazel run`, a Deno script can also make use of Bazel runtime
+environment variables like `$BUILD_WORKSPACE_DIRECTORY` and
+`$BUILD_WORKING_DIRECTORY`.
+
+### Deno libraries
+
+There's no need for a `deno_library` rule, since Deno will just access imported
+script files at runtime. If you'd like to make file bundles to include in your
+`deps`, just use a `filegroup`.
+
+```starlark
+filegroup(
+    name = "deno_utils",
+    srcs = [
+        "bazel.ts",
+        "console.ts",
+    ],
+)
+```
 
 ### Generating outputs
 
