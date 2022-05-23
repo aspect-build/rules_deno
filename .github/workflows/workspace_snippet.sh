@@ -13,7 +13,7 @@ WORKSPACE snippet:
 \`\`\`starlark
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
-    name = "contrib_rules_deno",
+    name = "aspect_rules_deno",
     sha256 = "${SHA}",
     strip_prefix = "${PREFIX}",
     url = "https://github.com/aspect-build/rules_deno/archive/refs/tags/${TAG}.tar.gz",

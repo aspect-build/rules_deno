@@ -2,7 +2,7 @@
 # This is *not* included in the published distribution.
 workspace(
     # see https://docs.bazel.build/versions/main/skylark/deploying.html#workspace
-    name = "contrib_rules_deno",
+    name = "aspect_rules_deno",
 )
 
 local_repository(

@@ -1,6 +1,6 @@
 # Override http_archive for local testing
 local_repository(
-    name = "contrib_rules_deno",
+    name = "aspect_rules_deno",
     path = "../..",
 )
 
@@ -11,7 +11,7 @@ local_repository(
 ######################
 
 load(
-    "@contrib_rules_deno//deno:repositories.bzl",
+    "@aspect_rules_deno//deno:repositories.bzl",
     "LATEST_VERSION",
     "deno_register_toolchains",
     "rules_deno_dependencies",
