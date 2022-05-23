@@ -22,7 +22,7 @@ Now you can use the deno toolchain fetched for your platform.
 The `deno_binary` rule creates executable Bazel targets from Deno script files.
 
 ```starlark
-load("@contrib_rules_deno//deno:defs.bzl", "deno_binary")
+load("@aspect_rules_deno//deno:defs.bzl", "deno_binary")
 
 deno_binary(
     name = "example",

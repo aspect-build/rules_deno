@@ -1,3 +1,5 @@
+"implementation details for deno_binary"
+
 def _deno_binary_impl(ctx):
     is_windows = ctx.target_platform_has_constraint(ctx.attr._windows_constraint[platform_common.ConstraintValueInfo])
 
@@ -15,7 +17,7 @@ def _deno_binary_impl(ctx):
     outfile = ctx.actions.declare_file(outfile_name)
 
     # Get Deno executable and build flags to include in launcher
-    deno = ctx.toolchains["@contrib_rules_deno//deno:toolchain_type"]
+    deno = ctx.toolchains["@aspect_rules_deno//deno:toolchain_type"]
     flags = _build_deno_flags(unstable_apis = ctx.attr.unstable_apis, allow = ctx.attr.allow)
     runtime_args = leftover_args
 
@@ -49,7 +51,7 @@ def _deno_binary_impl(ctx):
 deno_binary = rule(
     implementation = _deno_binary_impl,
     executable = True,
-    toolchains = ["@contrib_rules_deno//deno:toolchain_type"],
+    toolchains = ["@aspect_rules_deno//deno:toolchain_type"],
     attrs = {
         "main": attr.label(
             allow_single_file = True,
@@ -79,7 +81,7 @@ For Deno documentation, see https://deno.land/manual.
 
 Example:
 ```starlark
-load("@contrib_rules_deno//deno:defs.bzl", "deno_binary")
+load("@aspect_rules_deno//deno:defs.bzl", "deno_binary")
 
 deno_binary(
   name = "example",

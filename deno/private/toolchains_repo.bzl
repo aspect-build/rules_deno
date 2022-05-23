@@ -52,7 +52,7 @@ def _toolchains_repo_impl(repository_ctx):
 
 # Forward all the providers
 def _resolved_toolchain_impl(ctx):
-    toolchain_info = ctx.toolchains["@contrib_rules_deno//deno:toolchain_type"]
+    toolchain_info = ctx.toolchains["@aspect_rules_deno//deno:toolchain_type"]
     return [
         toolchain_info,
         toolchain_info.default,
@@ -64,7 +64,7 @@ def _resolved_toolchain_impl(ctx):
 # https://cs.opensource.google/bazel/bazel/+/master:tools/jdk/java_toolchain_alias.bzl
 resolved_toolchain = rule(
     implementation = _resolved_toolchain_impl,
-    toolchains = ["@contrib_rules_deno//deno:toolchain_type"],
+    toolchains = ["@aspect_rules_deno//deno:toolchain_type"],
     incompatible_use_toolchain_transition = True,
 )
 """
@@ -89,7 +89,7 @@ toolchain(
     exec_compatible_with = {compatible_with},
     target_compatible_with = {compatible_with},
     toolchain = "@{user_repository_name}_{platform}//:deno_toolchain",
-    toolchain_type = "@contrib_rules_deno//deno:toolchain_type",
+    toolchain_type = "@aspect_rules_deno//deno:toolchain_type",
 )
 """.format(
             platform = platform,

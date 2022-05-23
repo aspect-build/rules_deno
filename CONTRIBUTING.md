@@ -30,7 +30,7 @@ artifact or a version fetched from the internet, run this from this
 directory:
 
 ```sh
-OVERRIDE="--override_repository=contrib_rules_deno=$(pwd)/rules_deno"
+OVERRIDE="--override_repository=aspect_rules_deno=$(pwd)/rules_deno"
 echo "common $OVERRIDE" >> ~/.bazelrc
 ```
 

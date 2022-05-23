@@ -16,7 +16,7 @@ For Deno documentation, see https://deno.land/manual.
 
 Example:
 ```starlark
-load("@contrib_rules_deno//deno:defs.bzl", "deno_binary")
+load("@aspect_rules_deno//deno:defs.bzl", "deno_binary")
 
 deno_binary(
   name = "example",
