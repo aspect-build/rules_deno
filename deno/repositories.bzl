@@ -53,7 +53,7 @@ def deno_register_toolchains(name, **kwargs):
     - register a toolchain pointing at each platform
     Users can avoid this macro and do these steps themselves, if they want more control.
     Args:
-        name: base name for all created repos, like "deno1_14"
+        name: base name for all created repos, like "deno1_24"
         **kwargs: passed to each node_repositories call
     """
     for platform in PLATFORMS.keys():

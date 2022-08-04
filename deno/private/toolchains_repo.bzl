@@ -106,6 +106,6 @@ toolchains_repo = repository_rule(
     doc = """Creates a repository with toolchain definitions for all known platforms
      which can be registered or selected.""",
     attrs = {
-        "user_repository_name": attr.string(doc = "what the user chose for the base name, eg. deno1_14"),
+        "user_repository_name": attr.string(doc = "what the user chose for the base name, eg. deno1_24"),
     },
 )
