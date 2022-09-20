@@ -23,6 +23,7 @@ deno_binary(
         "write",
         "env",
     ],
+    lockfile = "main.lock",
     main = "main.ts",
     unstable_apis = True,
     deps = [
