@@ -12,7 +12,7 @@ local_repository(
 
 load(
     "@aspect_rules_deno//deno:repositories.bzl",
-    "LATEST_VERSION",
+    "LATEST_DENO_VERSION",
     "deno_register_toolchains",
     "rules_deno_dependencies",
 )
@@ -26,5 +26,5 @@ rules_deno_dependencies()
 
 deno_register_toolchains(
     name = "deno",
-    deno_version = LATEST_VERSION,
+    deno_version = LATEST_DENO_VERSION,
 )
