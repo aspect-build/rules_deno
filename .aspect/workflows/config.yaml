@@ -1,0 +1,9 @@
+# See https://docs.aspect.build/v/workflows/config
+---
+env:
+  DENO_DIR: /mnt/ephemeral/caches/.deno
+workspaces:
+  - .
+  - e2e/workspace
+tasks:
+  test:
