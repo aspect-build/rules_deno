@@ -79,7 +79,7 @@ module "aspect_workflows" {
     }
   }
 
-  # GitHub Actions runner group definitions
+  # GitLab runner group definitions
   gl_runner_groups = {
     # The default runner group is use for the main build & test workflows.
     default = {
