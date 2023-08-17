@@ -26,6 +26,12 @@ DENO_VERSIONS = {
         "x86_64-apple-darwin": "sha384-Eg9hOHdSj3exVjZnTd4aMXpwaRT+Tc1bhsUiYToTylb6gEWJs3zQy2JFM4oHYCNS",
         "x86_64-pc-windows-msvc": "sha384-wuuY5z5m984ZzhiqnBpau3WWc7rY7jpT/Bvxe2d8e9ebvFUr+S6aVp41BxGG2W8E",
         "x86_64-unknown-linux-gnu": "sha384-/vLIKbP7saUEOPksBI6rmwBvJtbRboqNV33NFKaq9napAOZLMnMU3GlLLnBwTIyo",
+    },
+    "1.36.1": {
+        "aarch64-apple-darwin": "sha384-FBcCWqytvcMMwXLC0F7wuxG+jd5RMQ/Bjby+2cNilP4S09dmKg5NWp9tfiSD/Y4z",
+        "x86_64-apple-darwin": "sha384-DmorkRfYTflhastGXZhH5DrJR+Q+DlaOGWT/Z73mDk4EFliWVhTxtp1V+IBLZJp0",
+        "x86_64-pc-windows-msvc": "sha384-wrz0nQkfuvrjqo2Gb34LNV2BC2Y+kzo2kqyk0x3AIQruzgVERn5mh1rivsjxlDUM",
+        "x86_64-unknown-linux-gnu": "sha384-KdGmvD3axq8l8GN7qmvjE9QXDGZJ/Lg0kdH/V1hGOg45iGO6jDt2zq9HGOD2l2fB",
     }
 }
 

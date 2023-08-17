@@ -21,7 +21,7 @@ rules_deno_dependencies()
 
 deno_register_toolchains(
     name = "deno1_31",
-    deno_version = "1.31.1",
+    deno_version = "1.36.1",
 )
 
 # For running our own unit tests
