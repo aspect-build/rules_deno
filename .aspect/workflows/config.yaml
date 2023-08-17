@@ -6,4 +6,5 @@ workspaces:
   - .
   - e2e/workspace
 tasks:
+  buildifier:
   test:

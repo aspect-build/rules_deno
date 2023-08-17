@@ -59,3 +59,11 @@ def rules_deno_internal_deps():
         strip_prefix = "bazel-lib-0.9.7",
         url = "https://github.com/aspect-build/bazel-lib/archive/refs/tags/v0.9.7.tar.gz",
     )
+
+    maybe(
+        http_archive,
+        name = "buildifier_prebuilt",
+        sha256 = "e46c16180bc49487bfd0f1ffa7345364718c57334fa0b5b67cb5f27eba10f309",
+        strip_prefix = "buildifier-prebuilt-6.1.0",
+        urls = ["https://github.com/keith/buildifier-prebuilt/archive/6.1.0.tar.gz"],
+    )
