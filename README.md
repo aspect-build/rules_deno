@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository has been **PERMANENTLY MOVED** to GitLab: https://gitlab.com/aspect-build/rules_deno
+
 # Bazel rules for deno
 
 This is very early experimental code to provide basic Deno support under Bazel.
