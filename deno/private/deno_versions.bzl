@@ -32,7 +32,7 @@ DENO_VERSIONS = {
         "x86_64-apple-darwin": "sha384-DmorkRfYTflhastGXZhH5DrJR+Q+DlaOGWT/Z73mDk4EFliWVhTxtp1V+IBLZJp0",
         "x86_64-pc-windows-msvc": "sha384-wrz0nQkfuvrjqo2Gb34LNV2BC2Y+kzo2kqyk0x3AIQruzgVERn5mh1rivsjxlDUM",
         "x86_64-unknown-linux-gnu": "sha384-KdGmvD3axq8l8GN7qmvjE9QXDGZJ/Lg0kdH/V1hGOg45iGO6jDt2zq9HGOD2l2fB",
-    }
+    },
 }
 
 LATEST_DENO_VERSION = DENO_VERSIONS.keys()[-1]
