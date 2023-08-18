@@ -13,12 +13,12 @@ The three components of the configuration are,
 
 ## Aspect Workflows terraform module
 
-This is found under the [`.aspect/workflows/terraform`](./terraform/README.md) directory.
+This is found under the [.aspect/workflows/terraform](./terraform) directory.
 
 ## Aspect Workflows configuration yaml
 
-This is the `config.yaml` file in this directory.
+This is the [config.yaml](./config.yaml) file in this directory.
 
 ## GitLab CI configuration
 
-This is the `.gitlab-ci.yml` file at the root of the repository.
+This is the [.gitlab-ci.yml](../../.gitlab-ci.yml) file at the root of the repository.
