@@ -3,7 +3,7 @@ stages:
   - "Trigger Aspect Workflows"
 
 aspect-workflows-setup:
-  script: rosetta steps --configuration .aspect/workflows/config.yaml > .gitlab-aspect-workflows.yaml
+  script: rosetta steps > .gitlab-aspect-workflows.yaml
   stage: "Setup Aspect Workflows"
   tags:
     - aspect-workflows
