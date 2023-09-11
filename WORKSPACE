@@ -20,8 +20,8 @@ load("//deno:repositories.bzl", "deno_register_toolchains", "rules_deno_dependen
 rules_deno_dependencies()
 
 deno_register_toolchains(
-    name = "deno1_31",
-    deno_version = "1.36.1",
+    name = "deno1_36",
+    deno_version = "1.36.4",
 )
 
 # For running our own unit tests
