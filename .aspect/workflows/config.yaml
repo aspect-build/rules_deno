@@ -5,10 +5,6 @@ env:
 workspaces:
   - .
   - e2e/workspace
-bazel:
-  flags:
-    - --remote_download_minimal
-    - --nobuild_runfile_links
 tasks:
   buildifier:
   test:
