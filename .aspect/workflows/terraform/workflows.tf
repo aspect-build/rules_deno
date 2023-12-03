@@ -30,7 +30,7 @@ module "aspect_workflows" {
   }
 
   # Aspect Workflows terraform module
-  source = "https://s3.us-east-2.amazonaws.com/static.aspect.build/aspect/5.8.10/workflows/terraform-aws-aspect-workflows.zip"
+  source = "https://s3.us-east-2.amazonaws.com/static.aspect.build/aspect/5.8.15/workflows/terraform-aws-aspect-workflows.zip"
 
   # Non-terraform Aspect Workflows release artifacts are pulled from the region specific
   # aspect-artifacts bucket during apply. Aspect will grant your AWS account access to this bucket
@@ -113,7 +113,7 @@ module "aspect_workflows" {
       resource_type             = "default"
       scale_out_factor          = 4
       scaling_polling_frequency = 3  # check for queued jobs every 20s
-      warming                   = true
+      warming                   = false  # warming not yet implemented for GitLab
     }
     # The warming runner group is used for the periodic warming job that creates
     # warming archives for use by other runner groups.
