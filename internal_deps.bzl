@@ -55,9 +55,9 @@ def rules_deno_internal_deps():
     maybe(
         http_archive,
         name = "aspect_bazel_lib",
-        sha256 = "aedc52557a74dc69d0be0638d6bad38f0f617e2fef475a2945e2662ae5ee2f94",
-        strip_prefix = "bazel-lib-0.9.7",
-        url = "https://github.com/aspect-build/bazel-lib/archive/refs/tags/v0.9.7.tar.gz",
+        sha256 = "262e3d6693cdc16dd43880785cdae13c64e6a3f63f75b1993c716295093d117f",
+        strip_prefix = "bazel-lib-1.38.1",
+        url = "https://github.com/aspect-build/bazel-lib/releases/download/v1.38.1/bazel-lib-v1.38.1.tar.gz",
     )
 
     maybe(
@@ -66,4 +66,12 @@ def rules_deno_internal_deps():
         sha256 = "e46c16180bc49487bfd0f1ffa7345364718c57334fa0b5b67cb5f27eba10f309",
         strip_prefix = "buildifier-prebuilt-6.1.0",
         urls = ["https://github.com/keith/buildifier-prebuilt/archive/6.1.0.tar.gz"],
+    )
+
+    maybe(
+        http_archive,
+        name = "aspect_rules_lint",
+        sha256 = "604666ec7ffd4f5f2636001ae892a0fbc29c77401bb33dd10601504e3ba6e9a7",
+        strip_prefix = "rules_lint-0.6.1",
+        url = "https://github.com/aspect-build/rules_lint/releases/download/v0.6.1/rules_lint-v0.6.1.tar.gz",
     )
