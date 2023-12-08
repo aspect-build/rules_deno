@@ -64,7 +64,7 @@ module "aspect_workflows" {
 
   # Warming set definitions
   warming_sets = {
-    default  = {}
+    default = {}
   }
 
   # Resource types for use by runner groups
@@ -88,8 +88,8 @@ module "aspect_workflows" {
       queue                     = "aspect-default"
       resource_type             = "default"
       scale_out_factor          = 4
-      scaling_polling_frequency = 3  # check for queued jobs every 20s
-      warming                   = false  # warming not yet implemented for GitLab
+      scaling_polling_frequency = 3     # check for queued jobs every 20s
+      warming                   = false # warming not yet implemented for GitLab
     }
     # The warming runner group is used for the periodic warming job that creates
     # warming archives for use by other runner groups.
