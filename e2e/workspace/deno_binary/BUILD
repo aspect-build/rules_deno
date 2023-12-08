@@ -2,8 +2,8 @@
 Add a basic smoke-test target below.
 """
 
-load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("@aspect_rules_deno//deno:defs.bzl", "deno_binary")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 # Local Deno dependency scripts are just loaded from the file system. This makes
 # filegroup the exact behavior we would want of a deno_library rule.
