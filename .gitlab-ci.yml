@@ -7,7 +7,7 @@ aspect-workflows-setup:
   stage: "Setup Aspect Workflows"
   tags:
     - aspect-workflows
-    - aspect-default
+    - aspect-small-arm64
   artifacts:
     paths:
       - .gitlab-aspect-workflows.yaml

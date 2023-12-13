@@ -6,6 +6,8 @@ workspaces:
   - .
   - e2e/workspace:
       tasks:
+        - test:
+            queue: aspect-small-amd64
         - format:
             without: true
         - buildifier:
@@ -13,5 +15,7 @@ workspaces:
 tasks:
   - format:
       soft_fail: false
+      queue: aspect-small-amd64
   - buildifier:
+      queue: aspect-small-arm64
   - test:
