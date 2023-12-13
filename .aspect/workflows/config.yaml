@@ -6,12 +6,12 @@ workspaces:
   - .
   - e2e/workspace:
       tasks:
-        format:
-          without: true
-        buildifier:
-          without: true
+        - format:
+            without: true
+        - buildifier:
+            without: true
 tasks:
-  format:
-    soft_fail: false
-  buildifier:
-  test:
+  - format:
+      soft_fail: false
+  - buildifier:
+  - test:
