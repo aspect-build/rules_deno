@@ -12,10 +12,14 @@ workspaces:
             without: true
         - buildifier:
             without: true
+        - configure:
+            without: true
 tasks:
   - format:
       soft_fail: false
       queue: aspect-small-amd64
   - buildifier:
+      queue: aspect-small-arm64
+  - configure:
       queue: aspect-small-arm64
   - test:
