@@ -116,8 +116,8 @@ module "aspect_workflows" {
       project_id                = "48581929"
       queue                     = "aspect-default"
       resource_type             = "default"
-      scaling_polling_frequency = 3     # check for queued jobs every 20s
-      warming                   = false # warming not yet implemented for GitLab
+      scaling_polling_frequency = 3 # check for queued jobs every 20s
+      warming                   = true
     }
     small-amd64 = {
       agent_idle_timeout_min    = 10
