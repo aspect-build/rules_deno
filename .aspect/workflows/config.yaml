@@ -23,3 +23,5 @@ tasks:
   - configure:
       queue: aspect-small-arm64
   - test:
+  - warming:
+      queue: aspect-warming
