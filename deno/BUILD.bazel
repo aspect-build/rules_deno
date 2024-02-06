@@ -28,9 +28,14 @@ bzl_library(
     deps = [
         "//deno/private:deno_versions",
         "//deno/private:toolchains_repo",
-        "@bazel_tools//tools/build_defs/repo:http.bzl",
-        "@bazel_tools//tools/build_defs/repo:utils.bzl",
     ],
+)
+
+bzl_library(
+    name = "dependencies",
+    srcs = ["dependencies.bzl"],
+    visibility = ["//visibility:public"],
+    deps = ["//deno/private:maybe"],
 )
 
 bzl_library(

@@ -10,12 +10,7 @@ local_repository(
 # rules_deno setup #
 ######################
 
-load(
-    "@aspect_rules_deno//deno:repositories.bzl",
-    "LATEST_DENO_VERSION",
-    "deno_register_toolchains",
-    "rules_deno_dependencies",
-)
+load("@aspect_rules_deno//deno:dependencies.bzl", "rules_deno_dependencies")
 
 # Fetches the rules_deno dependencies.
 # If you want to have a different version of some dependency,
@@ -23,6 +18,8 @@ load(
 # Alternatively, you can skip calling this function, so long as you've
 # already fetched all the dependencies.
 rules_deno_dependencies()
+
+load("@aspect_rules_deno//deno:repositories.bzl", "LATEST_DENO_VERSION", "deno_register_toolchains")
 
 deno_register_toolchains(
     name = "deno",

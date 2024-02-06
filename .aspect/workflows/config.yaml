@@ -14,6 +14,8 @@ workspaces:
             without: true
         - configure:
             without: true
+        - gazelle:
+            without: true
 tasks:
   - format:
       soft_fail: false
@@ -21,5 +23,7 @@ tasks:
   - buildifier:
       queue: aspect-small-arm64
   - configure:
+      queue: aspect-small-arm64
+  - gazelle:
       queue: aspect-small-arm64
   - test:

@@ -1,0 +1,24 @@
+"""BUILD definition for gazelle
+This is in its own package to not trigger eager fetches.
+"""
+
+load("@bazel_gazelle//:def.bzl", "gazelle", "gazelle_binary")
+
+package(default_visibility = ["//:__subpackages__"])
+
+gazelle_binary(
+    name = "gazelle_bin",
+    languages = ["@bazel_skylib_gazelle_plugin//bzl"],
+)
+
+gazelle(
+    name = "gazelle",
+    gazelle = "gazelle_bin",
+    mode = "fix",
+)
+
+gazelle(
+    name = "gazelle.check",
+    gazelle = "gazelle_bin",
+    mode = "diff",
+)

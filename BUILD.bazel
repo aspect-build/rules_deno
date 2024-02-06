@@ -1,42 +1,24 @@
-load("@bazel_gazelle//:def.bzl", "gazelle", "gazelle_binary")
-load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
-load("@buildifier_prebuilt//:rules.bzl", "buildifier")
-
-gazelle_binary(
-    name = "gazelle_bin",
-    languages = ["@bazel_skylib//gazelle/bzl"],
-)
-
-gazelle(
-    name = "gazelle",
-    gazelle = "gazelle_bin",
-)
-
-buildifier(
+alias(
     name = "buildifier",
-    exclude_patterns = ["./.git/*"],
-    lint_mode = "fix",
-    mode = "fix",
+    actual = "//tools/buildifier",
 )
 
-buildifier(
+alias(
     name = "buildifier.check",
-    exclude_patterns = ["./.git/*"],
-    lint_mode = "warn",
-    mode = "diff",
+    actual = "//tools/buildifier:buildifier.check",
 )
 
 alias(
     name = "format",
-    actual = "//tools:format",
+    actual = "//tools/format",
 )
 
-bzl_library(
-    name = "internal_deps",
-    srcs = ["internal_deps.bzl"],
-    visibility = ["//visibility:public"],
-    deps = [
-        "@bazel_tools//tools/build_defs/repo:http.bzl",
-        "@bazel_tools//tools/build_defs/repo:utils.bzl",
-    ],
+alias(
+    name = "gazelle",
+    actual = "//tools/gazelle",
+)
+
+alias(
+    name = "gazelle.check",
+    actual = "//tools/gazelle:gazelle.check",
 )

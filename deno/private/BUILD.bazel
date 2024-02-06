@@ -17,3 +17,20 @@ bzl_library(
     srcs = ["binary.bzl"],
     visibility = ["//deno:__subpackages__"],
 )
+
+bzl_library(
+    name = "internal_deps",
+    srcs = ["internal_deps.bzl"],
+    visibility = ["//deno:__subpackages__"],
+    deps = [":maybe"],
+)
+
+bzl_library(
+    name = "maybe",
+    srcs = ["maybe.bzl"],
+    visibility = ["//deno:__subpackages__"],
+    deps = [
+        "@bazel_tools//tools/build_defs/repo:http.bzl",
+        "@bazel_tools//tools/build_defs/repo:utils.bzl",
+    ],
+)
