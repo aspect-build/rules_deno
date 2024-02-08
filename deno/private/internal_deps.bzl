@@ -17,9 +17,9 @@ def rules_deno_internal_deps():
 
     http_archive(
         name = "aspect_rules_lint",
-        sha256 = "98bed74aff6498ea9b58ff36db27a952c7a1b53764171c5d0d29ef0c61ffc4fb",
-        strip_prefix = "rules_lint-0.11.0",
-        url = "https://github.com/aspect-build/rules_lint/releases/download/v0.11.0/rules_lint-v0.11.0.tar.gz",
+        sha256 = "28d319339b7a4e70b03642b19dbd5daa5f1ae461e1c50706e02110c78f850137",
+        strip_prefix = "rules_lint-0.9.1",
+        url = "https://github.com/aspect-build/rules_lint/releases/download/v0.9.1/rules_lint-v0.9.1.tar.gz",
     )
 
     http_archive(
