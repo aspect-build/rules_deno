@@ -7,7 +7,7 @@ workspaces:
   - e2e/workspace:
       tasks:
         - test:
-            queue: aspect-small-amd64
+            queue: aspect-small
         - format:
             without: true
         - buildifier:
@@ -18,12 +18,11 @@ workspaces:
             without: true
 tasks:
   - format:
-      soft_fail: false
-      queue: aspect-small-amd64
+      queue: aspect-small
   - buildifier:
-      queue: aspect-small-arm64
+      queue: aspect-small-graviton
   - configure:
-      queue: aspect-small-arm64
+      queue: aspect-small-graviton
   - gazelle:
-      queue: aspect-small-arm64
+      queue: aspect-small-graviton
   - test:

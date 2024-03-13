@@ -1,19 +1,19 @@
 stages:
-  - "Setup Aspect Workflows"
-  - "Trigger Aspect Workflows"
+  - 'Setup Aspect Workflows'
+  - 'Trigger Aspect Workflows'
 
 aspect-workflows-setup:
   script: rosetta steps > .gitlab-aspect-workflows.yaml
-  stage: "Setup Aspect Workflows"
+  stage: 'Setup Aspect Workflows'
   tags:
     - aspect-workflows
-    - aspect-nano
+    - aspect-nano-graviton
   artifacts:
     paths:
       - .gitlab-aspect-workflows.yaml
 
 aspect-workflows-trigger:
-  stage: "Trigger Aspect Workflows"
+  stage: 'Trigger Aspect Workflows'
   trigger:
     include:
       - artifact: .gitlab-aspect-workflows.yaml
