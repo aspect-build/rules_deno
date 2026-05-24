@@ -1,24 +1,9 @@
 alias(
     name = "buildifier",
-    actual = "//tools/buildifier",
-)
-
-alias(
-    name = "buildifier.check",
-    actual = "//tools/buildifier:buildifier.check",
-)
-
-alias(
-    name = "format",
-    actual = "//tools/format",
+    actual = "//tools/format:buildifier",
 )
 
 alias(
     name = "gazelle",
     actual = "//tools/gazelle",
-)
-
-alias(
-    name = "gazelle.check",
-    actual = "//tools/gazelle:gazelle.check",
 )

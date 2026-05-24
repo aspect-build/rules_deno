@@ -1,0 +1,79 @@
+name: CI - Aspect Workflows
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+permissions:
+    id-token: write
+
+env:
+    ASPECT_API_TOKEN: ${{ secrets.ASPECT_API_TOKEN }}
+    # Pin the version of aspect-launcher to install to avoid GitHub API rate limiting from `latest` lookups in CI.
+    INSTALL_ASPECT_LAUNCHER_VERSION: 2026.21.21
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+    cancel-in-progress: true
+
+jobs:
+    buildifier:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: bazel-contrib/setup-bazel@c5acdfb288317d0b5c0bbd7a396a3dc868bb0f86 # 0.19.0
+              with:
+                bazelisk-cache: true
+                disk-cache: ${{ github.workflow }}-buildifier-root
+                repository-cache: true
+                external-cache: true
+            - name: Buildifier
+              run: |
+                curl -fsSL https://install.aspect.build | bash -s -- "$INSTALL_ASPECT_LAUNCHER_VERSION"
+                aspect buildifier --task-key=buildifier
+    gazelle:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: bazel-contrib/setup-bazel@c5acdfb288317d0b5c0bbd7a396a3dc868bb0f86 # 0.19.0
+              with:
+                bazelisk-cache: true
+                disk-cache: ${{ github.workflow }}-gazelle-root
+                repository-cache: true
+                external-cache: true
+            - name: Gazelle
+              run: |
+                curl -fsSL https://install.aspect.build | bash -s -- "$INSTALL_ASPECT_LAUNCHER_VERSION"
+                aspect gazelle --task-key=gazelle
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: bazel-contrib/setup-bazel@c5acdfb288317d0b5c0bbd7a396a3dc868bb0f86 # 0.19.0
+              with:
+                bazelisk-cache: true
+                disk-cache: ${{ github.workflow }}-test-root
+                repository-cache: true
+                external-cache: true
+            - name: Test
+              run: |
+                curl -fsSL https://install.aspect.build | bash -s -- "$INSTALL_ASPECT_LAUNCHER_VERSION"
+                aspect test --task-key=test -- //...
+    test-e2e-workspace:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: bazel-contrib/setup-bazel@c5acdfb288317d0b5c0bbd7a396a3dc868bb0f86 # 0.19.0
+              with:
+                bazelisk-cache: true
+                disk-cache: ${{ github.workflow }}-test-e2e-workspace
+                repository-cache: true
+                external-cache: true
+            - name: Test (e2e/workspace)
+              working-directory: e2e/workspace
+              run: |
+                curl -fsSL https://install.aspect.build | bash -s -- "$INSTALL_ASPECT_LAUNCHER_VERSION"
+                aspect test --task-key=test-e2e-workspace -- //...
