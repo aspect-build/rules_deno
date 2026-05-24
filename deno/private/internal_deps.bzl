@@ -9,17 +9,48 @@ load("//deno/private:maybe.bzl", http_archive = "maybe_http_archive")
 def rules_deno_internal_deps():
     "Fetch deps needed for local development"
     http_archive(
-        name = "aspect_bazel_lib",
-        sha256 = "04feedcd06f71d0497a81fdd3220140a373ff9d2bff94620fbd50b774f96d8e0",
-        strip_prefix = "bazel-lib-1.40.2",
-        url = "https://github.com/aspect-build/bazel-lib/releases/download/v1.40.2/bazel-lib-v1.40.2.tar.gz",
+        name = "bazel_lib",
+        sha256 = "c6e2be1c7a30ef6de9d0e15cd3a4b6bc62fe156848117c0a1eeedf97561a4f6b",
+        strip_prefix = "bazel-lib-3.3.1",
+        url = "https://github.com/bazel-contrib/bazel-lib/releases/download/v3.3.1/bazel-lib-v3.3.1.tar.gz",
     )
 
     http_archive(
         name = "aspect_rules_lint",
-        sha256 = "28d319339b7a4e70b03642b19dbd5daa5f1ae461e1c50706e02110c78f850137",
-        strip_prefix = "rules_lint-0.9.1",
-        url = "https://github.com/aspect-build/rules_lint/releases/download/v0.9.1/rules_lint-v0.9.1.tar.gz",
+        sha256 = "78e0d8b35270be83f4ee0895b2327d5165016b7a2c9204ac50c2a9b98852bbe9",
+        strip_prefix = "rules_lint-1.13.0",
+        url = "https://github.com/aspect-build/rules_lint/releases/download/v1.13.0/rules_lint-v1.13.0.tar.gz",
+    )
+
+    http_archive(
+        name = "bazelrc-preset.bzl",
+        sha256 = "af1053fb5224c69843eae55c11596cd9a987200f94b60ee036797c9a022c9c0c",
+        strip_prefix = "bazelrc-preset.bzl-1.9.2",
+        url = "https://github.com/bazel-contrib/bazelrc-preset.bzl/releases/download/v1.9.2/bazelrc-preset.bzl-v1.9.2.tar.gz",
+    )
+
+    # Required transitively by bazelrc-preset.bzl, which loads
+    # `@bazel_features_version//:version.bzl`. In bzlmod that repo is created
+    # by the `version_extension` extension; under WORKSPACE we have to call
+    # `bazel_features_deps()` from WORKSPACE to materialize it.
+    http_archive(
+        name = "bazel_features",
+        sha256 = "6a727a78c0134b1b912c97c0937e1c956f35775934ae3e1f4af4156f8d5d1ff4",
+        strip_prefix = "bazel_features-1.47.1",
+        url = "https://github.com/bazel-contrib/bazel_features/releases/download/v1.47.1/bazel_features-v1.47.1.tar.gz",
+    )
+
+    http_archive(
+        name = "rules_multirun",
+        sha256 = "a203b9f098297b8e5b38e8e746d3f9e55ce2687a76a18599ae0b3fbf8359a7eb",
+        url = "https://github.com/keith/rules_multirun/releases/download/0.13.0/rules_multirun.0.13.0.tar.gz",
+    )
+
+    http_archive(
+        name = "rules_shell",
+        sha256 = "20721f63908879c083f94869e618ea8d4ff5edb91ff9a72a2ebee357fdbc352d",
+        strip_prefix = "rules_shell-0.8.0",
+        url = "https://github.com/bazelbuild/rules_shell/releases/download/v0.8.0/rules_shell-v0.8.0.tar.gz",
     )
 
     http_archive(

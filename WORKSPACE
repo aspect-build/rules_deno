@@ -10,6 +10,12 @@ load("@aspect_rules_deno//deno/private:internal_deps.bzl", "rules_deno_internal_
 
 rules_deno_internal_deps()
 
+# bazelrc-preset.bzl reads `@bazel_features_version//:version.bzl`, which only
+# exists after bazel_features_deps() materializes its child repos.
+load("@bazel_features//:deps.bzl", "bazel_features_deps")
+
+bazel_features_deps()
+
 load("@aspect_rules_deno//deno:dependencies.bzl", "rules_deno_dependencies")
 
 rules_deno_dependencies()
@@ -63,12 +69,8 @@ load("@stardoc_maven//:defs.bzl", stardoc_pinned_maven_install = "pinned_maven_i
 
 stardoc_pinned_maven_install()
 
-load(
-    "@aspect_rules_lint//format:repositories.bzl",
-    "fetch_shfmt",
-    "fetch_terraform",
-)
+load("@rules_shell//shell:repositories.bzl", "rules_shell_dependencies", "rules_shell_toolchains")
 
-fetch_shfmt()
+rules_shell_dependencies()
 
-fetch_terraform()
+rules_shell_toolchains()
